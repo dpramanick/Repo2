@@ -1,0 +1,72 @@
+<%= render "shared/topnav" %>
+<div class="container">
+  <div class="col-md-8 col-md-offset-2 form-bg">
+    <h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs mar">
+        <span class="text-danger">*</span>
+        <%#= f.input :email, required: false, autofocus: true %>
+        <%= f.label :email %>
+        <%= f.text_field :email, class:"form-control", required: true, autofocus: true, input_html: { autocomplete: "email" } %>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        <% end %>
+
+        <div class="mar">
+          <span class="text-danger">*</span>
+          <%= f.label :name %>
+          <%= f.text_field :name, class:"form-control", required: true, input_html: { autocomplete: "name"} %>
+        </div>
+
+        <div class="mar">
+          <span class="text-danger">*</span>
+          <%= f.label :telephone %>
+          <%= f.text_field :telephone, class:"form-control", required: true %>
+        </div>
+
+        <div class="mar">
+          <span class="text-danger">*</span>
+          <%= f.label :postcode %>
+          <%= f.text_field :postcode, class:"form-control", required: true %>
+        </div>
+
+        <div class="mar">
+          <%= f.label :latitude %>
+          <%= f.text_field :latitude, class:"form-control", required: true %>
+        </div>
+
+        <div class="mar">
+          <%= f.label :longitude %>
+          <%= f.text_field :longitude, class:"form-control", required: true %>
+        </div>
+        
+        <div class="mar">
+          <span class="text-danger">*</span>
+          <%= f.label :password %>
+          <%= f.text_field :password, class:"form-control", required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
+        </div>
+
+        <div class="mar">
+          <span class="text-danger">*</span>
+          <%= f.label :password_confirmation %>
+          <%= f.text_field :password_confirmation, class:"form-control", required: true, input_html: { autocomplete: "new-password" } %>
+        </div>
+
+        <div class="mar">
+          <span class="text-danger">*</span>
+          <%= f.label :current_password %>
+          <%= f.text_field :current_password, class:"form-control", required: true, input_html: { autocomplete: "current-password" }, hint: "we need your current password to confirm your changes" %>
+        </div>
+      </div>
+
+      <div class="form-actions form-buttons">
+        <%= f.button :submit, "Update" %>
+        <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-default" %>
+      </div>
+    <% end %>
+  </div>
+</div>

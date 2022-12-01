@@ -1,0 +1,25 @@
+<%= render("shared/topnav") %>
+
+<div class="container">
+  <div class="add_category">
+    <div>
+
+      <h1>Edit Review</h1>
+
+      <%= simple_form_for([@product, @review]) do |f| %>
+      <div class="form-group">
+        <div class="mar">
+          <%= f.input :rating %>
+        </div>
+
+        <div class="mar">
+          <%= f.label :comment %>
+          <%= f.text_area :comment, class:"form-control", input_html: { autocomplete: "comment"} %>
+        </div>
+          <%= f.button :submit %><br />
+          
+          <%= link_to "Back", 'javascript:history.back()', class: "btn btn-outline-secondary" %>
+       <% end %>
+    </div>
+  </div>
+</div>

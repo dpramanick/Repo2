@@ -1,0 +1,60 @@
+<%= render("shared/topnav") %>
+
+<% if user_signed_in? && current_user.admin? %>
+
+    <div class="col-md-12 m-3 border rounded shadow">
+        <h3 class="sellp text-center m-3">Sellers' Products</h3>
+    </div>
+
+<!--    <% @users.each do |i| %>    
+            <% k = Product.where(:user_id => i.id) %>
+            <% if k.count != 0 %>
+                <h4>Seller Name - <%= i.name %></h4>
+                
+                <% k.each do |j| %>
+                <div class="listing-box">
+                    <div class="thumbnail account-card">
+                        <%= image_tag((j.picture if j.picture.attached?), class: "account-img")%>
+                        <div class="caption">
+                            <h3><%= j.name %></h3>
+                            <h5>Price: <%= number_to_currency(j.price / 100) %></h5>
+                            <h5>Condition: <%= j.condition.name %></h5>
+                            <div class="account-button-container">
+                                <%= link_to("View", product_path(j), class: "btn btn-default") %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <% end %><br />
+            <% end %>
+    <% end %> -->
+
+    <div class="container">
+        <% @users.each do |i| %>    
+            <% k = Product.where(:user_id => i.id) %>
+            <% if k.count != 0 %>
+                <h4 class="text-center">Seller Name - <%= i.name %></h4>
+                
+                <% k.each do |j| %>
+                <div class="listing-box1">
+                    <div class="thumbnail account-card">
+                        <%= image_tag((j.picture if j.picture.attached?), class: "account-img")%>
+                        <div class="caption">
+                            <h3><%= j.name %></h3>
+                            <h5>Price: <%= number_to_currency(j.price / 100) %></h5>
+                            <h5>Condition: <%= j.condition.name %></h5>
+                            <div class="">
+                                <%= link_to("View", product_path(j), class: "btn btn-default") %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <% end %><br />
+            <% end %>
+    <% end %>
+
+    </div>
+
+<% end %>

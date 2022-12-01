@@ -1,0 +1,98 @@
+<!-- <%= simple_form_for @product do |f| %>
+
+	<% if product.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being created:</h2>
+
+        <ul>
+          <% product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+	<%= f.input :name, label: "Item Name", required: true %>
+
+	<%= f.input :price, label: "Price in cents", required: true %>
+
+	<%= f.input :description, required: true %>
+
+
+	<%#= f.input :category_id, as: :select, collection: @categories, prompt: 'Select Category', label: false, required: true %>
+
+	<%= f.input :condition_id, as: :select, collection: @conditions, prompt: 'Select Condition', label: false, required: true %>
+
+  <div>
+    <%= f.label :category, style: "display: block" %>
+    <%= f.select :category_id, options_for_select(@categories.collect { |cat| [cat.name, cat.id]}) %>
+  </div>
+
+  <%= f.input :picture, as: "file", accept: "image/png,image/gif,image/jpeg,image/jpg", label: "Image of Item", required: true %>
+
+  <div class="map-container">
+    <div id="map"></div>
+  </div>
+
+  <%= f.button :submit, class: "btn btn-default" %>
+  
+<% end %> -->
+<div class="card">
+  <div class="card-body g-2">
+  <%= simple_form_for @product do |f| %>
+
+	<% if product.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being created:</h2>
+
+        <ul>
+          <% product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+	 <div class="mar">
+    <span class="text-danger">*</span>
+    <%= f.label :name %>
+    <%= f.text_field :name, class:"form-control", required: true, input_html: { autocomplete: "name"} %>
+  </div>
+
+   <div class="mar">
+    <span class="text-danger">*</span>
+    <%= f.label :price %>
+    <%= f.text_field :price, class:"form-control", required: true, input_html: { autocomplete: "price"} %>
+  </div>
+
+  <div class="mar">
+    <span class="text-danger">*</span>
+    <%= f.label :description %>
+    <%= f.text_area :description, class:"form-control", required: true, input_html: { autocomplete: "description"} %>
+  </div>
+
+  <div class="mar">
+    <span class="text-danger">*</span>
+    <%= f.label :conditions %>
+    <%= f.select :condition_id, options_for_select(@conditions.collect { |con| [con.name, con.id]}) %>
+  </div>
+
+  <div class="mar">
+    <span class="text-danger">*</span>
+    <%= f.label :categories %>
+    <%= f.select :category_id, options_for_select(@categories.collect { |cat| [cat.name, cat.id]}) %>
+  </div>
+
+  <div class="mar">
+    <%= f.input :picture, as: "file", accept: "image/png,image/gif,image/jpeg,image/jpg", required: false %>
+  </div>
+
+  <div class="map-container">
+    <div id="map"></div>
+  </div>
+
+  <%= f.button :submit, class: "btn btn-default" %>
+  
+<% end %>
+</div>
+</div>

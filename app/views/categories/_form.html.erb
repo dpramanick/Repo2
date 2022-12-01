@@ -1,0 +1,14 @@
+<% action = @category.persisted? ? category_path(@category) : categories_path %>
+<form action="<%= action %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <% if @category.persisted? %>
+    <input type="hidden" name="_method" value="PUT">
+  <% end %>
+
+  <div class="form-group">
+    <label for="name", class="h3">Name</label>
+    <input type="text", class="form-control", name="category[name]" id="name" value="<%= @category.name %>", placeholder="Add Category">
+  </div>
+  <input type="submit", class="btn btn-default", value="Submit">
+</form>
+

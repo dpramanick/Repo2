@@ -1,0 +1,30 @@
+<%= render "shared/topnav" %>
+<div class="container">
+  <div class="col-md-8 col-md-offset-2 form-bg">
+
+
+    <h2>Log in</h2>
+
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="mar">
+        <span class="text-danger">*</span>
+        <%= f.label :email %>
+        <%= f.email_field :email, class:"form-control",required: true, autofocus: true, input_html: { autocomplete: "email" } %>
+      </div>
+
+      <div class="mar">
+        <span class="text-danger">*</span>
+        <%= f.label :password %>
+        <%= f.password_field :password, class:"form-control",required: true, input_html: { autocomplete: "current-password" } %>
+      </div><br />
+
+      <div class="mb-3 d-flex align-items-center justify-content-center">
+            <%= f.submit "Log In", class:"btn btn-primary " %>
+      </div>
+    <% end %><br />
+
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

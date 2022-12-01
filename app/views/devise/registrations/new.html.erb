@@ -1,0 +1,73 @@
+<%= render "shared/topnav" %>
+<div class="container">
+  <div class="col-md-8 col-md-offset-2 form-bg">
+
+    <h2>Sign up</h2>
+
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
+
+        <div class="mar">
+          <span class="text-danger">*</span>
+          <%= f.label :name %>
+          <%= f.text_field :name, class:"form-control", required: true, input_html: { autocomplete: "name"} %>
+        </div>
+
+        <div class="mar">
+          <span class="text-danger">*</span>
+          <%= f.label :email %>
+          <%= f.text_field :email, class:"form-control", required: true, autofocus: true, input_html: { autocomplete: "email" } %>
+        </div>
+
+        <div class="mar">
+          <span class="text-danger">*</span>
+          <%= f.label :password %>
+          <%= f.text_field :password, class:"form-control", required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
+        </div>
+
+        <div class="mar">
+          <span class="text-danger">*</span>
+          <%= f.label :password_confirmation %>
+          <%= f.text_field :password_confirmation, class:"form-control", required: true, input_html: { autocomplete: "new-password" } %>
+        </div>
+
+        <div class="mar">
+          <span class="text-danger">*</span>
+          <%= f.label :telephone %>
+          <%= f.text_field :telephone, class:"form-control", required: true %>
+        </div>
+
+        <div class="mar">
+          <span class="text-danger">*</span>
+          <%= f.label :postcode %>
+          <%= f.text_field :postcode, class:"form-control", required: true %>
+        </div>
+
+        <div class="mar">
+          <%= f.label :latitude %>
+          <%= f.text_field :latitude, class:"form-control", required: true %>
+        </div>
+
+        <div class="mar">
+          <%= f.label :longitude %>
+          <%= f.text_field :longitude, class:"form-control", required: true %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Sign up", class: "btn btn-primary btn-lg" %>
+        </div>
+    <% end %>
+    <br />
+
+    <%- if devise_mapping.omniauthable? %>
+      <%- resource_class.omniauth_providers.each do |provider| %>
+        <%= form_for "Login",
+          url: omniauth_authorize_path(resource_name, provider), 
+          method: :post,
+          data: {turbo: "false"} do |f| %>
+            <%= f.submit "Login with Google", class: "btn btn-default" %>
+          <% end %>
+     <% end %>
+    <% end %>
+  </div>
+</div>
