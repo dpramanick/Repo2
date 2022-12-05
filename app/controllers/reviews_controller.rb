@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_product
-  before_action :find_review, only: [:edit, :update, :destroy]
+  before_action :find_review, only: %i[edit update destroy]
   before_action :has_reviewed, only: [:new]
 
   def new
@@ -20,8 +22,7 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @review.update(review_params)
@@ -51,7 +52,6 @@ class ReviewsController < ApplicationController
   end
 
   def has_reviewed
-    redirect_to product_path(@product), notice: "You've already written a review for this product!" 
+    redirect_to product_path(@product), notice: "You've already written a review for this product!"
   end
-  
 end

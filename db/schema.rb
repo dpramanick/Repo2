@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_30_094313) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_05_172855) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -47,6 +47,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_094313) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "bproducts", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.text "location"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "category_id", null: false
+    t.integer "condition_id"
+    t.integer "user_id"
+    t.boolean "purchased"
+    t.boolean "is_approved", default: false
+    t.index ["category_id"], name: "index_bproducts_on_category_id"
+    t.index ["condition_id"], name: "index_bproducts_on_condition_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -115,6 +131,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_094313) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "product_id"
+    t.integer "bproduct_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -147,6 +164,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_094313) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bproducts", "categories"
+  add_foreign_key "bproducts", "conditions"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "participants", "rooms"

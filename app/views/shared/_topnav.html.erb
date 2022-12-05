@@ -13,7 +13,8 @@
           <ul class="nav navbar-nav">
             <% if user_signed_in? && !current_user.admin? %>
               <li><%= link_to("Sign Out", destroy_user_session_path, method: :delete) %></li>
-              <li><%= link_to("New Listing", new_product_path) %></li>
+              <li><%= link_to("New Listing By Sellers", new_product_path) %></li>
+              <li><%= link_to("New Listing By Buyers", new_bproduct_path) %></li>
 
 
             <% elsif user_signed_in? && current_user.admin? %>
@@ -23,6 +24,7 @@
               <li><%= link_to("Confirmed Approval", admin_confirmed_approvals_path, class: "nav-item nav-link") %></li>
               <li><%= link_to("Create Categories", admin_create_categories_path, class: "nav-item nav-link") %></li>
               <li><%= link_to("Seller", admin_seller_path, class: "nav-item nav-link") %></li>
+              <li><%= link_to("Buyer", admin_buyer_path, class: "nav-item nav-link") %></li>
 
 
 

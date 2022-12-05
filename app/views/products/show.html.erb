@@ -66,9 +66,6 @@
             <% if @product.picture.attached? %>
               <%= image_tag((@product.picture), class: "image-box")%>
             <% end %>
-            <h2>Average Rating</h2>
-            <div class="average-review-rating" data-score=<%= @product.reviews %>></div>
-            <span>Based on <%= @product.reviews.count %> reviews</span>
           </div>
         </div>
     </div>

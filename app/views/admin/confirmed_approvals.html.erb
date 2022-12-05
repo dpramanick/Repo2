@@ -23,6 +23,26 @@
                     </tr>
                 <% end %>
                 </tbody>
+
+                <thead>
+                <tr>    
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Price</th>
+                    <th>Buyer</th> 
+                </tr>
+                </thead>
+
+                <tbody>
+                <% @bproducts.each do |bproduct| %>
+                    <tr>
+                    <td><%= bproduct.name %></td>
+                    <td><%= bproduct.location %></td>
+                    <td><%= bproduct.price %></td>
+                    <td><%= bproduct.user.name %></td>               
+                    </tr>
+                <% end %>
+                </tbody>
             </table>       
             </div>       
     </div>

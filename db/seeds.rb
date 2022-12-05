@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -6,44 +8,47 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-
-
 conditions = Condition.create([
-  { name: "Poor", description: "Poor condition items have functional problems that will usually require repair or work. " },
-  { name: "Fair", description: "Fair items generally work, however, may have some minor functional or cosmetic issues." },
-  { name: "Good", description: "Good items are generally in good working order, however, may have some cosmetic blemishes." },
-  { name: "Excellent", description: "Excellent gear is in almost-new condition, free of blemishes and heavy use." }
-])
+                                { name: 'Poor',
+                                  description: 'Poor condition items have functional problems that will usually require repair or work. ' },
+                                { name: 'Fair',
+                                  description: 'Fair items generally work, however, may have some minor functional or cosmetic issues.' },
+                                { name: 'Good',
+                                  description: 'Good items are generally in good working order, however, may have some cosmetic blemishes.' },
+                                { name: 'Excellent',
+                                  description: 'Excellent gear is in almost-new condition, free of blemishes and heavy use.' }
+                              ])
 
 categories = Category.create([
-  { name: "Guitar", description: "Electric & Acoustic guitars." },
-  { name: "Bass", description: "Bass guitars & other bass stringed instruments." },
-  { name: "Drums & Percussion", description: "Drum kits, drums & other percussive instruments." },
-  { name: "Synth & Keyboards", description: "Pianos, keyboards & synthesizers." },
-  { name: "Amplifiers", description: "Guitar, keyboard & general audio amplifiers." },
-  { name: "Pro Audio", description: "Professional audio equipment, such as PA systems & mixing desks." }
-])
+                               { name: 'Guitar', description: 'Electric & Acoustic guitars.' },
+                               { name: 'Bass', description: 'Bass guitars & other bass stringed instruments.' },
+                               { name: 'Drums & Percussion',
+                                 description: 'Drum kits, drums & other percussive instruments.' },
+                               { name: 'Synth & Keyboards', description: 'Pianos, keyboards & synthesizers.' },
+                               { name: 'Amplifiers', description: 'Guitar, keyboard & general audio amplifiers.' },
+                               { name: 'Pro Audio',
+                                 description: 'Professional audio equipment, such as PA systems & mixing desks.' }
+                             ])
 
-for i in 1..80
+(1..80).each do |_i|
   user = User.new(
-    name: Faker::Name.first_name + " " + Faker::Name.last_name,
+    name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
     email: Faker::Internet.email,
-    password: "password",
-    postcode: rand(1000..4999),
+    password: 'password',
+    postcode: rand(1000..4999)
   )
   user.save!
-  puts "Created user #{ user.name} "
+  puts "Created user #{user.name} "
 end
 
-
-for i in 1..100
+(1..100).each do |_i|
   user = User.order('RANDOM()').first
   category = Category.order('RANDOM()').first
   condition = Condition.order('RANDOM()').first
 
   prod = Product.new(
-    name: (Faker::Company.name) + " " + (Faker::Music.instrument),
-    price: rand(5000..99900),
+    name: "#{Faker::Company.name} #{Faker::Music.instrument}",
+    price: rand(5000..99_900),
     location: rand(1000..4999),
     description: Faker::Quotes::Shakespeare.hamlet_quote,
     user_id: user.id,
@@ -51,9 +56,9 @@ for i in 1..100
     condition_id: condition.id,
     purchased: false
   )
-  temp_prod_file = Down.download(Faker::LoremFlickr.image(size: "300x300", search_terms: ['music', 'instrument']))
+  temp_prod_file = Down.download(Faker::LoremFlickr.image(size: '300x300', search_terms: %w[music instrument]))
   prod.picture.attach(io: temp_prod_file, filename: File.basename(temp_prod_file.path))
 
   prod.save!
-  puts "Created a #{ category.name } item called #{ prod.name } belonging to #{ user.name } in #{ condition.name } condition."
+  puts "Created a #{category.name} item called #{prod.name} belonging to #{user.name} in #{condition.name} condition."
 end
