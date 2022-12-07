@@ -6,7 +6,7 @@ class Bproduct < ApplicationRecord
   belongs_to :condition
   belongs_to :category
   has_one_attached :picture
-  has_many :reviews
+  has_many :breviews
 
   scope :search, ->(search) { where('name like ?', "%#{search}%") }
   scope :search, ->(search) { joins(:category).where('categories.name like ?', "%#{search}%").distinct }

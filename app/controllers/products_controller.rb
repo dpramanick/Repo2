@@ -27,11 +27,10 @@ class ProductsController < ApplicationController
     @seller = @product.user_id
     @current_user = current_user
     InterestMailer.with(seller_id: @seller, current_user: @current_user).notify.deliver_now
-    redirect_to request.referrer, notice: 'Interest mail sent to the seller!!'
+    redirect_to request.referrer, notice: 'Interest mail sent !!'
   end
 
   def show
-    
     @user = @product.user
     return unless user_signed_in? && current_user != @product.user
 

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :bproducts do
-    resources :reviews
+    resources :breviews
   end
 
   root 'pages#home'

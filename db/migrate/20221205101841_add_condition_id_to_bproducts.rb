@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddConditionIdToBproducts < ActiveRecord::Migration[7.0]
   def change
     add_reference :bproducts, :condition, foreign_key: true

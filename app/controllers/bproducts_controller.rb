@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BproductsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   before_action :set_bproduct, only: [:show]
@@ -25,7 +27,7 @@ class BproductsController < ApplicationController
     @seller = @bproduct.user_id
     @current_user = current_user
     InterestMailer.with(seller_id: @seller, current_user: @current_user).notify.deliver_now
-    redirect_to request.referrer, notice: 'Interest mail sent to the buyer!!'
+    redirect_to request.referrer, notice: 'Interest mail sent !!'
   end
 
   def show

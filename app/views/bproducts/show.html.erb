@@ -25,8 +25,13 @@
 
             <% if user_signed_in? %>
               <% if @bproduct.user_id == current_user.id %>
-                <%= link_to("Edit", edit_product_path(@bproduct), class: "btn btn-default") %>
-                <%= link_to("Delete", product_path(@bproduct), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default") %>
+                <%= link_to("Edit", edit_bproduct_path(@bproduct), class: "btn btn-default") %>
+                <%= link_to("Delete", bproduct_path(@bproduct), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default") %>
+
+                <% if @bproduct.breviews.count != 0 %>
+                  <h2>Reviews</h2>
+                  <%= render @bproduct.breviews %>
+                <% end %>
               <% else %>
 
                 <button data-stripe="payment" class="btn btn-default">Buy Now</button>
@@ -34,13 +39,13 @@
                 <button class="btn btn-info text-uppercase mb-4" id="show-tel" ><i class="fas fa-phone mr-2"></i><%= @user.telephone %></button>
                 <button class="btn btn-default"><%= link_to "Start Chatting", rooms_path %></button><br />
 
-                <% if @bproduct.reviews.count != 0 %>
+                <% if @bproduct.breviews.count != 0 %>
                   <h2>Reviews</h2>
-                  <%= render @bproduct.reviews %>
+                  <%= render @bproduct.breviews %>
                 <% end %>
                 
                 <div>
-                  <br /><button class="btn btn-default"><%= link_to "Add Review", new_product_review_path(@bproduct) %></button>
+                  <br /><button class="btn btn-default"><%= link_to "Add Review", new_bproduct_breview_path(@bproduct) %></button>
                 </div>
 
                 <script src="https://js.stripe.com/v3/"></script>
