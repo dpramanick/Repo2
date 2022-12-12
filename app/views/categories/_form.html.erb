@@ -5,6 +5,14 @@
     <input type="hidden" name="_method" value="PUT">
   <% end %>
 
+  <% if @category.errors.any? %>
+        <div class="alert alert-danger">
+            <% @category.errors.full_messages.each do |m| %>
+                <div><%= m %></div>
+            <% end %>
+        </div>
+    <% end %>
+
   <div class="form-group">
     <label for="name", class="h3">Name</label>
     <input type="text", class="form-control", name="category[name]" id="name" value="<%= @category.name %>", placeholder="Add Category">

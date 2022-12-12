@@ -10,6 +10,7 @@
                     <th>Location</th>
                     <th>Price</th>
                     <th>Seller</th> 
+                    <th>Person</th> 
                 </tr>
                 </thead>
 
@@ -19,27 +20,8 @@
                     <td><%= product.name %></td>
                     <td><%= product.location %></td>
                     <td><%= product.price %></td>
-                    <td><%= product.user.name %></td>               
-                    </tr>
-                <% end %>
-                </tbody>
-
-                <thead>
-                <tr>    
-                    <th>Name</th>
-                    <th>Location</th>
-                    <th>Price</th>
-                    <th>Buyer</th> 
-                </tr>
-                </thead>
-
-                <tbody>
-                <% @bproducts.each do |bproduct| %>
-                    <tr>
-                    <td><%= bproduct.name %></td>
-                    <td><%= bproduct.location %></td>
-                    <td><%= bproduct.price %></td>
-                    <td><%= bproduct.user.name %></td>               
+                    <td><%= product.user.name %></td> 
+                    <td><%= product.person %></td>              
                     </tr>
                 <% end %>
                 </tbody>

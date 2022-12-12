@@ -8,7 +8,7 @@
 
     <div class="container">
         <% @users.each do |i| %>    
-            <% k = Bproduct.where(:user_id => i.id) %>
+            <% k = Product.where(user_id: i.id, person: "buyer") %>
             <% if k.count != 0 %>
                 <h4 class="text-center">Buyer Name - <%= i.name %></h4>
                 
@@ -21,7 +21,7 @@
                             <h5>Price: <%= number_to_currency(j.price / 100) %></h5>
                             <h5>Condition: <%= j.condition.name %></h5>
                             <div class="">
-                                <%= link_to("View", bproduct_path(j), class: "btn btn-default") %>
+                                <%= link_to("View", product_path(j), class: "btn btn-default") %>
                             </div>
                         </div>
                     </div>

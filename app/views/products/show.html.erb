@@ -3,7 +3,7 @@
 <div class="container">
   <div class=".col-xs-12 .col-md-8">
     <div class="product-show">
-        <p id="notice"><%= notice %></p>
+        <p id="notice"><%#= notice %></p>
         <div class="product-box">
           <div class="product-details">
 
@@ -34,14 +34,26 @@
                 <button class="btn btn-info text-uppercase mb-4" id="show-tel" ><i class="fas fa-phone mr-2"></i><%= @user.telephone %></button>
                 <button class="btn btn-default"><%= link_to "Start Chatting", rooms_path %></button><br />
 
-                <% if @product.reviews.count != 0 %>
-                  <h2>Reviews</h2>
-                  <%= render @product.reviews %>
-                <% end %>
-                
-                <div>
-                  <br /><button class="btn btn-default"><%= link_to "Add Review", new_product_review_path(@product) %></button>
-                </div>
+                <% if @product.is_approved == true %>
+                  
+                  <% if @product.reviews.count != 0 %>
+                    <h2>Reviews</h2>
+                    <%= render @product.reviews %>
+                  <% end %>
+                  <% @status = 0 %>
+                  <% @product.reviews.each do |k| %>
+                    <% if k.user_id == current_user.id %>
+                      <% @status = 1 %>
+                    <% end %>
+                  <% end %>
+                  <% if @status != 1 %>
+                    <br /><button class="btn btn-default" onclick="myFunction1()">Add Review</button>
+                  <% end %>
+                  <div class="mar", id="review">
+                    <% @review = Review.new %>
+                    <%= render("reviews/form") %>
+                  </div>
+                <% end %> 
 
                 <script src="https://js.stripe.com/v3/"></script>
 
@@ -77,4 +89,14 @@
 
 <%= render("shared/footer") %>
 
+<script>
+  function myFunction1() {
+    var x = document.getElementById('review');
+    if (x.style.display === 'none') {
+      x.style.display = 'block';
+    } else {
+      x.style.display = 'none';
+    }
+  }
+</script>
 

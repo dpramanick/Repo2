@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_206_093_938) do
+ActiveRecord::Schema[7.0].define(version: 20_221_209_162_145) do
   create_table 'action_text_rich_texts', force: :cascade do |t|
     t.string 'name', null: false
     t.text 'body'
@@ -50,31 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 20_221_206_093_938) do
     t.bigint 'blob_id', null: false
     t.string 'variation_digest', null: false
     t.index %w[blob_id variation_digest], name: 'index_active_storage_variant_records_uniqueness', unique: true
-  end
-
-  create_table 'bproducts', force: :cascade do |t|
-    t.string 'name'
-    t.integer 'price'
-    t.text 'location'
-    t.text 'description'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.integer 'category_id', null: false
-    t.integer 'condition_id'
-    t.integer 'user_id'
-    t.boolean 'purchased'
-    t.boolean 'is_approved', default: false
-    t.index ['category_id'], name: 'index_bproducts_on_category_id'
-    t.index ['condition_id'], name: 'index_bproducts_on_condition_id'
-  end
-
-  create_table 'breviews', force: :cascade do |t|
-    t.integer 'rating'
-    t.text 'comment'
-    t.integer 'user_id'
-    t.integer 'bproduct_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
   end
 
   create_table 'categories', force: :cascade do |t|
@@ -132,6 +107,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_206_093_938) do
     t.integer 'user_id'
     t.boolean 'purchased'
     t.boolean 'is_approved', default: false
+    t.string 'person'
     t.index ['category_id'], name: 'index_products_on_category_id'
     t.index ['condition_id'], name: 'index_products_on_condition_id'
   end
@@ -175,8 +151,6 @@ ActiveRecord::Schema[7.0].define(version: 20_221_206_093_938) do
 
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'active_storage_variant_records', 'active_storage_blobs', column: 'blob_id'
-  add_foreign_key 'bproducts', 'categories'
-  add_foreign_key 'bproducts', 'conditions'
   add_foreign_key 'messages', 'rooms'
   add_foreign_key 'messages', 'users'
   add_foreign_key 'participants', 'rooms'

@@ -1,9 +1,7 @@
-
-<p>Name - <%= review.user_id %></p>
+<% @reviewer = User.where(id: review.user_id) %>
+<p>Name - <%= @reviewer[0].name %></p>
 <p>Rating - <%= review.rating %> star ratings</p>
 <p>Reviews - <%= review.comment %></p>
-
-
 
 <% if user_signed_in? %>
   <% if review.user_id == current_user.id %>

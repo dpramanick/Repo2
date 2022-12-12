@@ -20,27 +20,6 @@
 </div>
 
 <div class="row">
-    <h3>Current Listings As Buyer</h3>
-    <% @account.bproducts.where("purchased = false").each do |bproduct| %>
-        <div class="col-sm-6 col-md-4 listing-box">
-            <div class="thumbnail account-card">
-                <%= image_tag((bproduct.picture if bproduct.picture.attached?), class: "account-img")%>
-                <div class="caption">
-                    <h3><%= bproduct.name %></h3>
-                    <h5>Price: <%= number_to_currency(bproduct.price / 100) %></h5>
-                    <h5>Condition: <%= bproduct.condition.name %></h5>
-                    <div class="account-button-container">
-                        <%= link_to("View", bproduct_path(bproduct), class: "btn btn-default") %>
-                        <%= link_to("Edit", edit_bproduct_path(bproduct), class: "btn btn-default") %>
-                        <%= link_to("Delete", delete_bproduct_path(bproduct), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default") %>
-                    </div> 
-                </div>
-            </div>
-        </div>
-    <% end %>
-</div>
-
-<div class="row">
     <h3>Sold Items</h3>
     <% @account.products.where("purchased = true").each do |product| %>
         <div class="col-sm-6 col-md-4 listing-box">

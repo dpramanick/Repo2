@@ -104,8 +104,8 @@ gem 'omniauth-rails_csrf_protection', '~>1.0'
 # Download images for Seed file
 gem 'down'
 
-gem 'rubocop'
-gem 'rubocop-rails'
+gem 'rubocop', '~> 1.40'
+gem 'rubocop-rails', '~> 2.17', '>= 2.17.3'
 
 # Used to manually hit AusPost API w/ GET request
 # gem 'http'

@@ -1,6 +1,7 @@
 <div class="card">
   <div class="card-body g-2">
-  <%= simple_form_for @product do |f| %>
+  <%#= simple_form_for @product do |f| %>
+  <%= form_with model: @product, url: products_path do |f| %>
 
 	<% if product.errors.any? %>
       <div id="error_explanation">
@@ -17,19 +18,19 @@
 	 <div class="mar">
     <span class="text-danger">*</span>
     <%= f.label :name %>
-    <%= f.text_field :name, class:"form-control", required: true, input_html: { autocomplete: "name"} %>
+    <%= f.text_field :name, class:"form-control", required: true %>
   </div>
 
    <div class="mar">
     <span class="text-danger">*</span>
     <%= f.label :price %>
-    <%= f.text_field :price, class:"form-control", required: true, input_html: { autocomplete: "price"} %>
+    <%= f.text_field :price, class:"form-control", required: true %>
   </div>
 
   <div class="mar">
     <span class="text-danger">*</span>
     <%= f.label :description %>
-    <%= f.text_area :description, class:"form-control", required: true, input_html: { autocomplete: "description"} %>
+    <%= f.text_area :description, class:"form-control", required: true %>
   </div>
 
   <div class="mar">
@@ -45,7 +46,15 @@
   </div>
 
   <div class="mar">
-    <%= f.input :picture, as: "file", accept: "image/png,image/gif,image/jpeg,image/jpg", required: false %>
+    <span class="text-danger">*</span>
+      <%= f.label :person %>
+      <%= f.select :person, ["seller","buyer"] ,class:"form-control" %>
+  </div>
+
+  <div class="mar">
+    <%#= f.input :picture, as: "file", accept: "image/png,image/gif,image/jpeg,image/jpg", required: false %>
+      <%= f.label :photo %>
+      <%= f.file_field :picture, :class => "form-control" %>
   </div>
 
   <div class="map-container">

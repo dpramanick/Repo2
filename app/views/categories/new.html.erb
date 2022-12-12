@@ -1,19 +1,11 @@
 <%= render("shared/topnav") %>
-<!--
-<div class="container d-flex align-items-center justify-content-center">
-  <div>
-    <h1>Add category</h1><br />
-    <%= render 'form' %>
-   </div>
-</div> 
-
--->
 
 <div class="container">
     <div class="add_category">
         <div>
             <h1>Add category</h1>
-            <%= render 'form' %>
+            <%= render 'form' %><br />
+            <button class="btn btn-default"><%= link_to "Back", 'javascript:history.back()' %></button>
         </div>
     </div>
 </div>

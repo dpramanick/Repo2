@@ -1,18 +1,15 @@
 <%= render("shared/topnav")%>
 
 <div class="container">
-    <p id="notice"><%= notice %></p>
+    <p id="notice"><%#= notice %></p>
     <div class="jumbotron">
         <h2 class="display-4">Let's find something great!</h2>
         <%= form_with url: products_path, method: "GET", local: true do |form| %>
             <%= form.text_field :search, class: "form-control", id: "hero-search", placeholder: "Search..." %>
         <% end %>
         
-    <p class="random-product"><%= link_to("View All Listings By Sellers", products_path) %></p> 
-    <p class="random-product"><%= link_to("View All Listings By Buyers", bproducts_path) %></p> 
-        
-       
-  
+    <p class="random-product"><%= link_to("View All Listings By Sellers", products_path) %></p>  
+    <p class="random-product"><%= link_to("View All Listings By Buyers", product_buyer_path) %></p> 
     </div>
     <div class="category-box">
         <h2 class="display-4">Shop by Category</h2>
@@ -21,8 +18,6 @@
     <div class="row category-row">
         <%= render("categories") %>
     </div>
-
-    
 </div>
 
 <%= render("pages/map") %>
