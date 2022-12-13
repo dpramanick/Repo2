@@ -6,7 +6,6 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:google_oauth2]
 
   has_many :products, dependent: :destroy
-  has_many :bproducts, dependent: :destroy
   has_many :payments
   has_many :reviews
 

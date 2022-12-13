@@ -26,4 +26,11 @@ RSpec.describe User, type: :model do
       expect(@new_user2).to be_invalid
     end
   end
+
+  context 'associations' do
+    it { should have_many(:products).dependent(:destroy) }
+    it { should have_many(:payments) }
+    it { should have_many(:reviews) }
+    it { should have_many(:messages) }
+  end
 end

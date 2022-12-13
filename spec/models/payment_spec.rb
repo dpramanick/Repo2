@@ -2,9 +2,9 @@
 
 require 'rails_helper'
 
-RSpec.describe Participant, type: :model do
+RSpec.describe Payment, type: :model do
   context 'association' do
     it { should belong_to(:user) }
-    it { should belong_to(:room) }
+    it { should belong_to(:product) }
   end
 end

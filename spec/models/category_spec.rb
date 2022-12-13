@@ -7,6 +7,10 @@ RSpec.describe Category, type: :model do
     described_class.new(name: 'Guitar')
   end
 
+  context 'associations' do 
+    it { should have_many(:products) }
+  end
+
   it 'is valid with valid attributes' do
     expect(subject).to be_valid
   end

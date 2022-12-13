@@ -9,4 +9,9 @@ RSpec.describe Room, type: :model do
     room.should_not be_valid
     room.errors[:name].should include('has already been taken')
   end
+
+  context 'associations' do
+    it { should have_many(:messages) }
+    it { should have_many(:participants).dependent(:destroy) }
+  end
 end

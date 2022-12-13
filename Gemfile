@@ -59,8 +59,11 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'byebug'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem 'factory_girl_rails', '~> 4.4.1'
+  gem 'factory_bot', '~> 6.2', '>= 6.2.1'
   gem 'rspec-rails', '>= 3.9.0'
+  gem 'shoulda'
+  gem 'shoulda-callback-matchers'
+  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -109,3 +112,4 @@ gem 'rubocop-rails', '~> 2.17', '>= 2.17.3'
 
 # Used to manually hit AusPost API w/ GET request
 # gem 'http'
+

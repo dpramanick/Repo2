@@ -106,11 +106,8 @@ GEM
       addressable (~> 2.8)
     erubi (1.11.0)
     execjs (2.8.1)
-    factory_girl (4.4.0)
-      activesupport (>= 3.0.0)
-    factory_girl_rails (4.4.1)
-      factory_girl (~> 4.4.0)
-      railties (>= 3.0.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
     faker (3.0.0)
       i18n (>= 1.8.11, < 2)
     faraday (2.7.0)
@@ -310,6 +307,14 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    shoulda (4.0.0)
+      shoulda-context (~> 2.0)
+      shoulda-matchers (~> 4.0)
+    shoulda-callback-matchers (1.1.4)
+      activesupport (>= 3)
+    shoulda-context (2.0.0)
+    shoulda-matchers (4.5.1)
+      activesupport (>= 4.2.0)
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -379,7 +384,7 @@ DEPENDENCIES
   debug
   devise
   down
-  factory_girl_rails (~> 4.4.1)
+  factory_bot (~> 6.2, >= 6.2.1)
   faker
   image_processing (~> 1.2)
   importmap-rails
@@ -397,6 +402,9 @@ DEPENDENCIES
   rubocop-rails (~> 2.17, >= 2.17.3)
   sass-rails
   selenium-webdriver
+  shoulda
+  shoulda-callback-matchers
+  shoulda-matchers
   simple_form
   spring
   spring-watcher-listen
