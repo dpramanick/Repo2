@@ -40,7 +40,7 @@ Category.create([
     email: Faker::Internet.email,
     password: 'password',
     postcode: rand(1000..4999),
-    telephone: "8567486321",
+    telephone: '8567486321',
     latitude: rand(65_984..98_731),
     longitude: rand(34_891..97_421)
   )
@@ -62,7 +62,7 @@ end
     category_id: category.id,
     condition_id: condition.id,
     purchased: false,
-    person: "seller"
+    person: 'seller'
   )
   temp_prod_file = Down.download(Faker::LoremFlickr.image(size: '300x300', search_terms: %w[music instrument]))
   prod.picture.attach(io: temp_prod_file, filename: File.basename(temp_prod_file.path))
@@ -85,7 +85,7 @@ end
     category_id: category.id,
     condition_id: condition.id,
     purchased: false,
-    person: "buyer"
+    person: 'buyer'
   )
   temp_prod_file = Down.download(Faker::LoremFlickr.image(size: '300x300', search_terms: %w[music instrument]))
   prod.picture.attach(io: temp_prod_file, filename: File.basename(temp_prod_file.path))

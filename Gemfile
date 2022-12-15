@@ -109,6 +109,7 @@ gem 'down'
 
 gem 'rubocop', '~> 1.40'
 gem 'rubocop-rails', '~> 2.17', '>= 2.17.3'
+gem 'rubocop-rspec', '~> 2.16'
 
 # Used to manually hit AusPost API w/ GET request
 # gem 'http'

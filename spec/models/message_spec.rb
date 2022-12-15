@@ -7,4 +7,8 @@ RSpec.describe Message, type: :model do
     it { should belong_to(:user) }
     it { should belong_to(:room) }
   end
+
+  describe Message do
+    it { is_expected.to callback(:confirm_participant).before(:create)}
+  end
 end

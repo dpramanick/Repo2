@@ -18,5 +18,5 @@ RSpec.describe Product, type: :model do
   it 'is not valid without a category_id' do
     subject.category_id = nil
     expect(subject).to_not be_valid
-  end 
+  end
 end
