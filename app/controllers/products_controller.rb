@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Style/Documentation
+# rubocop:disable Style/Documentation, Metrics/AbcSize
 
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show buyer]
@@ -108,4 +108,4 @@ class ProductsController < ApplicationController
   end
 end
 
-# rubocop:enable Style/Documentation
+# rubocop:enable Style/Documentation, Metrics/AbcSize

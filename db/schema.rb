@@ -12,6 +12,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+# rubocop:disable Metrics/BlockLength
+
 ActiveRecord::Schema[7.0].define(version: 20_221_209_162_145) do
   create_table 'action_text_rich_texts', force: :cascade do |t|
     t.string 'name', null: false
@@ -160,3 +162,5 @@ ActiveRecord::Schema[7.0].define(version: 20_221_209_162_145) do
   add_foreign_key 'products', 'categories'
   add_foreign_key 'products', 'conditions'
 end
+
+# rubocop:enable Metrics/BlockLength

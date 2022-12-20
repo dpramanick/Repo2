@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Style/Documentation
+# rubocop:disable Style/Documentation, Metrics/AbcSize
 
 class UsersController < ApplicationController
   def show
@@ -23,4 +23,4 @@ class UsersController < ApplicationController
   end
 end
 
-# rubocop:enable Style/Documentation
+# rubocop:enable Style/Documentation, Metrics/AbcSize

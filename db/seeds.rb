@@ -8,6 +8,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+# rubocop:disable Style/CombinableLoops
+
 Condition.create([
                    { name: 'Poor',
                      description: 'Poor condition items have functional\
@@ -93,3 +95,5 @@ end
   prod.save!
   puts "Created a #{category.name} item called #{prod.name} belonging to #{user.name} in #{condition.name} condition."
 end
+
+# rubocop:enable Style/CombinableLoops
