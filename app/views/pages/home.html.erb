@@ -6,6 +6,7 @@
         <h2 class="display-4">Let's find something great!</h2>
         <%= form_with url: products_path, method: "GET", local: true do |form| %>
             <%= form.text_field :search, class: "form-control", id: "hero-search", placeholder: "Search..." %>
+            <%= form.select :rating,[1,2,3,4,5], class:"form-control me-2" %>
         <% end %>
         
     <p class="random-product"><%= link_to("View All Listings By Sellers", products_path) %></p>  
