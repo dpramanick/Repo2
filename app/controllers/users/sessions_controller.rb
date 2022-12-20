@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Style/Documentation
+
 module Users
   class SessionsController < Devise::SessionsController
     # before_action :configure_sign_in_params, only: [:create]
@@ -35,3 +37,5 @@ module Users
     # end
   end
 end
+
+# rubocop:enable Style/Documentation

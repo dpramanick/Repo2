@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Style/Documentation
+
 class InterestMailer < ApplicationMailer
   def notify
     @seller = params[:seller_id]
@@ -13,3 +15,5 @@ class InterestMailer < ApplicationMailer
     )
   end
 end
+
+# rubocop:enable Style/Documentation

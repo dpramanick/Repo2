@@ -9,6 +9,6 @@ RSpec.describe Message, type: :model do
   end
 
   describe Message do
-    it { is_expected.to callback(:confirm_participant).before(:create)}
+    it { is_expected.to callback(:confirm_participant).before(:create) }
   end
 end

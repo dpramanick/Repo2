@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Style/Documentation
+
 module Users
   class RegistrationsController < Devise::RegistrationsController
     # before_action :configure_sign_up_params, only: [:create]
@@ -73,3 +75,5 @@ module Users
     # end
   end
 end
+
+# rubocop:enable Style/Documentation

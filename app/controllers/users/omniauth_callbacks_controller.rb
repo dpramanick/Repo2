@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Style/Documentation
+
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # You should configure your model like this:
@@ -58,3 +60,5 @@ module Users
     end
   end
 end
+
+# rubocop:enable Style/Documentation

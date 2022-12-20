@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Style/Documentation
+
 class PagesController < ApplicationController
   def home
     @random_product = Product.order('RANDOM()').first
@@ -14,3 +16,5 @@ class PagesController < ApplicationController
     @purchase = current_user.payments
   end
 end
+
+# rubocop:enable Style/Documentation

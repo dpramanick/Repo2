@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Style/Documentation
+
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show buyer]
   before_action :set_product, only: [:show]
@@ -8,9 +10,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.order('created_at desc').where('purchased = false').page params[:page]
-
     @products = @products.search(params[:search]) if params[:search].present?
-
     @products = @products.condition_id(params[:condition_id]) if params[:condition_id].present?
     return unless params[:category_id].present?
 
@@ -19,9 +19,7 @@ class ProductsController < ApplicationController
 
   def buyer
     @products = Product.order('created_at desc').where('purchased = false').page params[:page]
-
     @products = @products.search(params[:search]) if params[:search].present?
-
     @products = @products.condition_id(params[:condition_id]) if params[:condition_id].present?
     return unless params[:category_id].present?
 
@@ -109,3 +107,5 @@ class ProductsController < ApplicationController
     @categories = Category.all.order(:name)
   end
 end
+
+# rubocop:enable Style/Documentation

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Style/Documentation
+
 class RoomsController < ApplicationController
   before_action :authenticate_user!
 
@@ -28,3 +30,5 @@ class RoomsController < ApplicationController
     @room = Room.create(name: params['room']['name'])
   end
 end
+
+# rubocop:enable Style/Documentation

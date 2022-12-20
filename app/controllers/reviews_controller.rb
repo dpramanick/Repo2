@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
+# rubocop:disable Style/Documentation
+
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_product
   before_action :find_review, only: %i[edit update destroy]
-  # before_action :has_reviewed, only: [:new]
 
   def new
     @review = Review.new
@@ -50,8 +51,6 @@ class ReviewsController < ApplicationController
   def find_review
     @review = Review.find(params[:id])
   end
-
-  # def has_reviewed
-  #  redirect_to product_path(@product), notice: "You've already written a review for this product!"
-  # end
 end
+
+# rubocop:enable Style/Documentation

@@ -14,8 +14,14 @@
                 
                 <% k.each do |j| %>
                 <div class="listing-box1">
-                    <div class="thumbnail account-card">
-                        <%= image_tag((j.picture if j.picture.attached?), class: "account-img")%>
+                    <div class="tn account-card">
+                    <div class="thumbnailimg">
+                      <% if j.picture.attached? %>
+                        <%= image_tag((j.picture), class: "account-img")%>
+                      <% else %>
+                        <h4>No image attached</h4>
+                      <% end %>
+                    </div>
                         <div class="caption">
                             <h3><%= j.name %></h3>
                             <h5>Price: <%= number_to_currency(j.price / 100) %></h5>

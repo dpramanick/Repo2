@@ -1,6 +1,5 @@
 <div class="card">
   <div class="card-body g-2">
-  <%#= simple_form_for @product do |f| %>
   <%= form_with model: @product, url: products_path do |f| %>
 
 	<% if product.errors.any? %>

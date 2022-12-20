@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Style/Documentation
+
 class Room < ApplicationRecord
   validates_uniqueness_of :name
   scope :public_rooms, -> { where(is_private: false) }
@@ -19,3 +21,5 @@ class Room < ApplicationRecord
     single_room
   end
 end
+
+# rubocop:enable Style/Documentation

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Style/Documentation
+
 class Message < ApplicationRecord
   belongs_to :user
   belongs_to :room
@@ -13,3 +15,5 @@ class Message < ApplicationRecord
     throw :abort unless is_participant
   end
 end
+
+# rubocop:enable Style/Documentation

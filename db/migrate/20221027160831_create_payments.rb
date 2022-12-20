@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Style/Documentation
+
 class CreatePayments < ActiveRecord::Migration[7.0]
   def change
     create_table :payments do |t|
@@ -11,3 +13,5 @@ class CreatePayments < ActiveRecord::Migration[7.0]
     end
   end
 end
+
+# rubocop:enable Style/Documentation

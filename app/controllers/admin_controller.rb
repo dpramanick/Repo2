@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Style/Documentation
+
 class AdminController < ApplicationController
   def pending_approvals
     @products = Product.where(is_approved: false).order('created_at DESC')
@@ -38,7 +40,7 @@ class AdminController < ApplicationController
     @product = Product.find(params[:id])
     return unless @product.update_attribute(:is_approved, true)
 
-    redirect_to @product, notice: 'Product approved.'
+    redirect_to request.referrer, notice: 'Product approved.'
   end
 
   def reject_product
@@ -55,3 +57,5 @@ class AdminController < ApplicationController
     params.require(:product).permit(:is_approved)
   end
 end
+
+# rubocop:enable Style/Documentation
