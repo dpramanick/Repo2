@@ -7,6 +7,12 @@ class Product < ApplicationRecord
   belongs_to :category
   has_one_attached :picture
   has_many :reviews
+  enum access: {
+    title: 'title',
+    price: 'price', 
+    category: 'category',
+    condition: 'condition'
+  }
 
   scope :search, ->(search) { where('name like ?', "%#{search}%") }
   scope :search, ->(search) { joins(:category).where('categories.name like ?', "%#{search}%").distinct }

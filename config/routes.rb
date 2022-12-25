@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   get 'users/show'
   get 'rooms/index'
+  get 'search', to: 'search#index'
 
   resources :products do
     resources :reviews

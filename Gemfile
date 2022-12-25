@@ -5,7 +5,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # ruby "2.7.0"
 
-ruby '3.0.0'
+#ruby '3.0.0'
+
+ruby '3.0.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.4'
@@ -113,3 +115,11 @@ gem 'rubocop-rspec', '~> 2.16'
 
 # Used to manually hit AusPost API w/ GET request
 # gem 'http'
+
+gem 'execjs'
+gem 'therubyracer'
+
+# gem "searchkick"
+# gem "elasticsearch"
+
+gem "ransack", "~> 3.2"

@@ -41,10 +41,10 @@ Category.create([
     name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
     email: Faker::Internet.email,
     password: 'password',
-    postcode: rand(1000..4999),
+    postcode: rand(12345...65432),
     telephone: '8567486321',
-    latitude: rand(65_984..98_731),
-    longitude: rand(34_891..97_421)
+    latitude: '65.784',
+    longitude: '54.321'
   )
   user.save!
   puts "Created user #{user.name} "
@@ -58,7 +58,7 @@ end
   prod = Product.new(
     name: "#{Faker::Company.name} #{Faker::Music.instrument}",
     price: rand(5000..99_900),
-    location: rand(1000..4999),
+    location: rand(12345...65432),
     description: Faker::Quotes::Shakespeare.hamlet_quote,
     user_id: user.id,
     category_id: category.id,
@@ -81,7 +81,7 @@ end
   prod = Product.new(
     name: "#{Faker::Company.name} #{Faker::Music.instrument}",
     price: rand(5000..99_900),
-    location: rand(1000..4999),
+    location: rand(12345...65432),
     description: Faker::Quotes::Shakespeare.hamlet_quote,
     user_id: user.id,
     category_id: category.id,

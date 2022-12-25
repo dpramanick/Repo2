@@ -18,7 +18,6 @@ import "controllers"
 
 
 
-
 function initMap(lat, lng) {    
     var myCoords = new google.maps.LatLng(lat, lng);    
     var mapOptions = {

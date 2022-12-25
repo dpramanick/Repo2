@@ -1,0 +1,42 @@
+<%#= form_tag("/home", method: "get") do %>
+    <%#= select_tag "s_cat", raw("<option>Price</option><option>Title</option><option>3</option>") %>
+<%# end %>
+
+<% if @s_cat == "price" %>
+  <%= search_form_for(@q, url: search_path, method: :get) do |f| %>
+    <%= f.search_field :price_eq,
+    placeholder: "Search Price...",
+    class:"form-control",
+    id: "hero-search" %>
+    <%#= f.submit "Search!", class: "btn btn-outline-success" %>
+  <% end %>
+
+<% elsif @s_cat == "category" %>
+  <%= search_form_for(@q, url: search_path, method: :get) do |f| %>
+    <%= f.search_field :category_name_cont,
+    placeholder: "Search Category...",
+    class:"form-control",
+    id: "hero-search" %>
+    <%#= f.submit "Search!", class: "btn btn-outline-success" %>
+  <% end %>
+
+<% elsif @s_cat == "condition" %>
+  <%= search_form_for(@q, url: search_path, method: :get) do |f| %>
+    <%= f.search_field :condition_name_cont,
+    placeholder: "Search Condition...",
+    class:"form-control",
+    id: "hero-search" %>
+    <%#= f.submit "Search!", class: "btn btn-outline-success" %>
+  <% end %>
+
+<% elsif @s_cat == "name" %>
+  <%= search_form_for(@q, url: search_path, method: :get) do |f| %>
+    <%= f.search_field :name_cont,
+    placeholder: "Search Name...",
+    class:"form-control",
+    id: "hero-search" %>
+    <%#= f.submit "Search!", class: "btn btn-outline-success" %>
+  <% end %>
+<% end %>
+
+
