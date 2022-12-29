@@ -2,30 +2,29 @@
 <div class="container">
     <h1>Editing Product</h1>
 
-    <%#= render 'form', product: @product %>
 <div class="card">
   <div class="card-body g-2">
   <%= form_with model: @product, url: product_path(id: @product.id, method: :patch) do |f| %>
 
 	<% if @product.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being created:</h2>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being created:</h2>
 
-        <ul>
-          <% product.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
+      <ul>
+        <% product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
     <% end %>
 
-	 <div class="mar">
+	<div class="mar">
     <span class="text-danger">*</span>
     <%= f.label :name %>
     <%= f.text_field :name, class:"form-control", required: true %>
   </div>
 
-   <div class="mar">
+  <div class="mar">
     <span class="text-danger">*</span>
     <%= f.label :price %>
     <%= f.text_field :price, class:"form-control", required: true %>
@@ -56,9 +55,8 @@
   </div>
 
   <div class="mar">
-    <%#= f.input :picture, as: "file", accept: "image/png,image/gif,image/jpeg,image/jpg", required: false %>
-      <%= f.label :photo %>
-      <%= f.file_field :picture, :class => "form-control" %>
+    <%= f.label :photo %>
+    <%= f.file_field :picture, :class => "form-control" %>
   </div>
 
   <div class="map-container">
@@ -70,5 +68,4 @@
 <% end %>
 </div>
 </div>
-
 </div>

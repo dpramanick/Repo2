@@ -8,17 +8,20 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:google_oauth2]
 
   has_many :products, dependent: :destroy
-  has_many :payments
   has_many :reviews
+  has_many :messages
+
   validates :latitude, numericality: { greater_than_or_equal_to: -89.999, less_than_or_equal_to: 89.999 }
   validates :longitude, numericality: { greater_than_or_equal_to: -89.999, less_than_or_equal_to: 89.999 }
   validates_format_of :postcode, with: /\A\d{5}-\d{4}|\A\d{5}\z/, message: 'should be 12345 or 12345-1234'
-  validates :telephone, length: { maximum: 15 },
+  validates :telephone, length: { minimum: 10 },
              format: { with: /\A(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}\z/ }
 
   scope :all_except, ->(user) { where.not(id: user) }
+  scope :single_room, ->(sroom) { where single_room: sroom }
+  scope :latest_first, -> { order(created_at: :asc) }
+
   after_create_commit { broadcast_append_to 'users' }
-  has_many :messages
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, user_id: auth.user_id).first_or_create do |user|

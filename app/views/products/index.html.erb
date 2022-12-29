@@ -2,24 +2,24 @@
 
 <div class="container">
 
-  <p id="notice"><%#= notice %></p>
+  <p id="notice"></p>
   
   <div class="row index-row">
-    <h3><%#= @products.count %> Results found</h3>
+    <h3>Results found</h3>
     <div>
-      <%= form_with url: products_path, method: "get", local: true, :html => {class: "filter-form"} do |form| %>
+      <%= form_with url: products_path, method: "get",  local: true, :html => {class: "filter-form"} do |form| %>
         
-        <div class="field">
-          <%= form.label :category_id %><br>
-          <%= form.collection_select :category_id, Category.order(:name), :id, :name, include_blank: true %>
-        </div>
+      <div class="field">
+        <%= form.label :category_id %><br>
+        <%= form.collection_select(:category_id, Category.order(:name), :id, :name, {:selected => @products.first&.category_id }) %>
+      </div>
 
-        <div class="field">
-          <%= form.label :condition_id %><br>
-          <%= form.collection_select :condition_id, Condition.order(:name), :id, :name, include_blank: true %>
-        </div>
+      <div class="field">
+        <%= form.label :condition_id %><br>
+        <%= form.collection_select(:condition_id, Condition.order(:name), :id, :name, {:selected => @products.first&.condition_id }) %>
+      </div>
 
-        <%= form.submit "Filter Listings", class: "btn btn-default btn-xs field" %>
+      <%= form.submit "Filter Listings", class: "btn btn-default btn-xs field" %>
 
       <% end %>
     </div>
@@ -46,10 +46,6 @@
       </div>
     <% end %>
     <% end %>
-  </div>
-  
-  <div>
-    <%= paginate @products %>
   </div>
 
 </div>

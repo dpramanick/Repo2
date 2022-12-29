@@ -4,10 +4,12 @@
 
 class AdminController < ApplicationController
   def pending_approvals
+    # @products = Product.is_approved(approve: false)
     @products = Product.where(is_approved: false).order('created_at DESC')
   end
 
   def confirmed_approvals
+    # @products = Product.is_approved(approve: true)
     @products = Product.where(is_approved: true).order('created_at DESC')
   end
 

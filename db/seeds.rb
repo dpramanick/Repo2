@@ -41,7 +41,7 @@ Category.create([
     name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
     email: Faker::Internet.email,
     password: 'password',
-    postcode: rand(12345...65432),
+    postcode: rand(12_345...65_432),
     telephone: '8567486321',
     latitude: '65.784',
     longitude: '54.321'
@@ -58,7 +58,7 @@ end
   prod = Product.new(
     name: "#{Faker::Company.name} #{Faker::Music.instrument}",
     price: rand(5000..99_900),
-    location: rand(12345...65432),
+    location: rand(12_345...65_432),
     description: Faker::Quotes::Shakespeare.hamlet_quote,
     user_id: user.id,
     category_id: category.id,
@@ -81,7 +81,7 @@ end
   prod = Product.new(
     name: "#{Faker::Company.name} #{Faker::Music.instrument}",
     price: rand(5000..99_900),
-    location: rand(12345...65432),
+    location: rand(12_345...65_432),
     description: Faker::Quotes::Shakespeare.hamlet_quote,
     user_id: user.id,
     category_id: category.id,

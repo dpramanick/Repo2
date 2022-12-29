@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # ruby "2.7.0"
 
-#ruby '3.0.0'
+# ruby '3.0.0'
 
 ruby '3.0.2'
 
@@ -122,4 +122,4 @@ gem 'therubyracer'
 # gem "searchkick"
 # gem "elasticsearch"
 
-gem "ransack", "~> 3.2"
+gem 'ransack', '~> 3.2'

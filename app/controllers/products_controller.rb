@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
   before_action :set_categories
 
   def index
-    @products = Product.order('created_at desc').where('purchased = false').page params[:page]
+    @products = Product.newest_first
     @products = @products.search(params[:search]) if params[:search].present?
     @products = @products.condition_id(params[:condition_id]) if params[:condition_id].present?
     return unless params[:category_id].present?
@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
   end
 
   def buyer
-    @products = Product.order('created_at desc').where('purchased = false').page params[:page]
+    @products = Product.newest_first
     @products = @products.search(params[:search]) if params[:search].present?
     @products = @products.condition_id(params[:condition_id]) if params[:condition_id].present?
     return unless params[:category_id].present?
@@ -27,12 +27,12 @@ class ProductsController < ApplicationController
   end
 
   def sell
-    @product = Product.find(params[:id])
+    @product = set_product
     @seller = @product.user_id
   end
 
   def smail
-    @product = Product.find(params[:id])
+    @product = set_product
     @seller = @product.user_id
     @current_user = current_user
     InterestMailer.with(seller_id: @seller, current_user: @current_user).notify.deliver_now
@@ -56,7 +56,7 @@ class ProductsController < ApplicationController
   def edit
     @categories = Category.all
     @conditions = Condition.all
-    @product = Product.find(params[:id])
+    @product = set_product
   end
 
   def create

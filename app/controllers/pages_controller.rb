@@ -4,8 +4,6 @@
 
 class PagesController < ApplicationController
   def home
-    @s_cat = params[:s_cat]
-    $glow = params[:glow]
     @random_product = Product.order('RANDOM()').first
     @q = Product.ransack(params[:q])
     @products = @q.result(distinct: true)
@@ -17,10 +15,7 @@ class PagesController < ApplicationController
 
   def account
     @account = current_user
-    @purchase = current_user.payments
   end
-
-
 end
 
 # rubocop:enable Style/Documentation

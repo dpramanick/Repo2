@@ -1,44 +1,28 @@
-<script>
-     /* var s_cat = document.getElementById("ss_cat")
-      @s_cat.addEventListener("change", (evt) => {
-      /*const age = evt.target.value
-      const birth_year = year - age
-      console.log("You were born in " + evt)
-    })*/
-
-    function f(event){
-      console.log(event.target.value);
-    }
-</script>
-
-
 <%= render("shared/topnav")%>
 
 <div class="container">
-    <p id="notice"><%#= notice %></p>
-    <div class="jumbotron">
-        <h2 class="display-4">Let's find something great!</h2>
-      <div class="fc">  
+  <p id="notice"><%#= notice %></p>
+  <div class="jumbotron">
+    <h2 class="display-4">Let's find something great!</h2>
+    <div class="fc">  
        <%# @s_cat = raw(<option>name</option><option>price</option><option>category</option><option>condition</option>) %>
        <%# @s_cat = "name" %>
-        <%= select_tag :"ss_cat", raw("<option value = 'name'>name</option><option value = 'price'>price</option><option value = 'category'>category</option><option value='condition'>condition</option>"), onchange: "f(event)" %>
 
-        <%= render 'search/form' %>
-      </div>
-
-    <p class="random-product"><%= link_to("View All Listings By Sellers", products_path) %></p>  
-    <p class="random-product"><%= link_to("View All Listings By Buyers", product_buyer_path) %></p> 
-    </div>
-    <div class="category-box">
-        <h2 class="display-4">Shop by Category</h2>
+    <%= render 'search/form' %>
     </div>
 
-    <div class="row category-row">
-        <%= render("categories") %>
-    </div>
+  <p class="random-product"><%= link_to("View All Listings By Sellers", products_path) %></p>  
+  <p class="random-product"><%= link_to("View All Listings By Buyers", product_buyer_path) %></p> 
+  </div>
+  <div class="category-box">
+      <h2 class="display-4">Shop by Category</h2>
+  </div>
+
+  <div class="row category-row">
+      <%= render("categories") %>
+  </div>
 </div>
 
 <%= render("pages/map") %>
 
 <%= render("shared/footer") %>
-

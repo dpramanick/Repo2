@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/BlockLength
+
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
@@ -19,4 +21,50 @@ RSpec.describe Product, type: :model do
     subject.category_id = nil
     expect(subject).to_not be_valid
   end
+
+  context 'category scope' do
+    before do
+      Category.create!(name: 'Guitar')
+      Condition.create!(name: 'Good')
+      @new_product = Product.create!(name: 'Nexa', condition_id: 1, category_id: 1)
+    end
+
+    it 'includes products with category' do
+      expect(Product.category_id(1)).to include(@new_product)
+    end
+
+    it 'excludes products with category' do
+      expect(Product.category_id(5)).not_to include(@new_product)
+    end
+  end
+
+  context 'condition scope' do
+    before do
+      Category.create!(name: 'Drum')
+      Condition.create!(name: 'Poor')
+      @new_product2 = Product.create!(name: 'Caramel', condition_id: 1, category_id: 1)
+    end
+
+    it 'includes products with condition' do
+      expect(Product.condition_id(1)).to include(@new_product2)
+    end
+
+    it 'excludes products with condition' do
+      expect(Product.condition_id(6)).not_to include(@new_product2)
+    end
+  end
+
+  context 'search scope' do
+    before do
+      Category.create!(name: 'Amplifiers')
+      Condition.create(name: 'Excellent')
+      @new_product3 = Product.create!(name: 'Cumil', condition_id: 1, category_id: 1)
+    end
+
+    it 'performs search' do
+      expect(Product.search('Amplifiers')).to include(@new_product3)
+    end
+  end
 end
+
+# rubocop:enable Metrics/BlockLength

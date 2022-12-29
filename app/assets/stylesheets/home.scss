@@ -1,87 +1,77 @@
 .jumbotron {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgb(8, 58, 112)), url(image-path("hero.jpg"));
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgb(8, 58, 112)), url(image-path("hero.jpg"));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-
 .display-4 {
-    color: #fff;
-    text-align: center;
+  color: #fff;
+  text-align: center;
 }
-
 #hero-search {
-    width: 198%;
-    margin: 1.5em auto 1.5em -35%;
+  width: 102%;
+  margin: 1.5em auto 1.5em -35%;
+  margin-left: 20px;
 }
-
 .fc {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 .random-product {
-    font-size: 1em;
-    font-style: italic;
-    display: flex;
-    justify-content: center;
-
-    a {
-        color: #d9d9d9;
-
-        &:visited{
-            color: #d9d9d9;
-        }
-        &:hover{
-            color: #bdbdbd;
-        }
-        &:active{
-            color: #bdbdbd;
-        }
+  font-size: 1em;
+  font-style: italic;
+  display: flex;
+  justify-content: center;
+  a {
+    color: #d9d9d9;
+    &:visited{
+      color: #d9d9d9;
     }
+    &:hover{
+      color: #bdbdbd;
+    }
+    &:active{
+      color: #bdbdbd;
+    }
+  }
 }
-
 #or-home {
-    p {
-        color: #d9d9d9;
-    }
+  p {
+    color: #d9d9d9;
+  }
 }
-
 .category-box h2 {
-    color: #4E4E4E;
+  color: #4E4E4E;
 }
-
 .category-row {
-    margin-top: 3em;
+  margin-top: 3em;
 }
-
 .category-logo {
-    display: block;
-    width: 10em;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;
+  display: block;
+  width: 10em;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
-
 .category-card {
-    background-color: #f8f8f8;
-    border: 0px solid;
-    border-radius: 10px;
+  background-color: #f8f8f8;
+  border: 0px solid;
+  border-radius: 10px;
 }
-
 .category-card:hover {
-    background-color: #e6e6e6;
+  background-color: #e6e6e6;
 }
-
 .card-title {
-    text-decoration: none;
-    color: black;
-    text-align: center;
-    padding-bottom: 1em;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  padding-bottom: 1em;
 }
-
 .container {
-    margin-bottom: 65px;
+  margin-bottom: 65px;
+}
+select#ss_cat {
+  margin-right: 93px;
 }

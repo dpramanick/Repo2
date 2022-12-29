@@ -1,79 +1,54 @@
 <%= render("shared/topnav") %>
-
 <div class="container">
   <div class=".col-xs-12 .col-md-8">
     <div class="product-show">
-        <p id="notice"><%#= notice %></p>
-        <div class="product-box">
-          <div class="product-details">
-
-            <h2><%= @product.name %></h2>
-            <p class="product-posted-by">Listed by <%= @product.user.name %> | <%= time_ago_in_words(@product.created_at) %> ago.</p>
-            <p>Location: <%= @product.location %></p>
-            <p>Condition: <%= @product.condition.name %></p>
-            <p>Category: <%= @product.category.name %></p>
-            <p>Description: <%= @product.description %></p>
-            <h3>Price: <%= number_to_currency(@product.price / 100.0) %></h3>
-
-
-            <% if user_signed_in? && current_user != @product.user %>
-              <h5>Shipping: <%= number_to_currency(@delivery_cost) %></h5>
-              <h5><%= @delivery_time %></h5>
+      <p id="notice"><%#= notice %></p>
+      <div class="product-box">
+        <div class="product-details">
+        <h2><%= @product.name %></h2>
+        <p class="product-posted-by">Listed by <%= @product.user.name %> | <%= time_ago_in_words(@product.created_at) %> ago.</p>
+        <p>Location: <%= @product.location %></p>
+        <p>Condition: <%= @product.condition.name %></p>
+        <p>Category: <%= @product.category.name %></p>
+        <p>Description: <%= @product.description %></p>
+        <h3>Price: <%= @product.price %></h3>
+          <% if user_signed_in? && current_user != @product.user %>
+            <h5>Shipping: <%= number_to_currency(@delivery_cost) %></h5>
+            <h5><%= @delivery_time %></h5>
+          <% end %>
+        <p class="product-posted-by">All currencies are $AUD</p>
+        <% if user_signed_in? %>
+          <% if @product.user_id == current_user.id %>
+            <%= link_to("Edit", edit_product_path(@product), class: "btn btn-default") %>
+            <%= link_to("Delete", product_path(@product), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default") %>
+          <% else %>
+          <button class="btn btn-default">Buy Now</button>
+          <button class="btn btn-default"><%= link_to "Interest", smail_product_path %></button>
+          <button class="btn btn-info text-uppercase mb-4" id="show-tel" ><i class="fas fa-phone mr-2"></i><%= @user.telephone %></button>
+          <button class="btn btn-default"><%= link_to "Start Chatting", rooms_path %></button><br />
+          <% if @product.is_approved == true %>
+            <% if @product.reviews.count != 0 %>
+              <h2>Reviews</h2>
+              <%= render @product.reviews %>
             <% end %>
-            <p class="product-posted-by">All currencies are $AUD</p>
-
-
-            <% if user_signed_in? %>
-              <% if @product.user_id == current_user.id %>
-                <%= link_to("Edit", edit_product_path(@product), class: "btn btn-default") %>
-                <%= link_to("Delete", product_path(@product), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default") %>
-              <% else %>
-
-                <button data-stripe="payment" class="btn btn-default">Buy Now</button>
-                <button class="btn btn-default"><%= link_to "Interest", smail_product_path %></button>
-                <button class="btn btn-info text-uppercase mb-4" id="show-tel" ><i class="fas fa-phone mr-2"></i><%= @user.telephone %></button>
-                <button class="btn btn-default"><%= link_to "Start Chatting", rooms_path %></button><br />
-
-                <% if @product.is_approved == true %>
-                  
-                  <% if @product.reviews.count != 0 %>
-                    <h2>Reviews</h2>
-                    <%= render @product.reviews %>
-                  <% end %>
-                  <% @status = 0 %>
-                  <% @product.reviews.each do |k| %>
-                    <% if k.user_id == current_user.id %>
-                      <% @status = 1 %>
-                    <% end %>
-                  <% end %>
-                  <% if @status != 1 %>
-                    <br /><button class="btn btn-default" onclick="myFunction1()">Add Review</button>
-                  <% end %>
-                  <div class="mar", id="review">
-                    <% @review = Review.new %>
-                    <%= render("reviews/form") %>
-                  </div>
-                <% end %> 
-
-                <script src="https://js.stripe.com/v3/"></script>
-
-                <script>
-                  document
-                  .querySelector("[data-stripe='payment']")
-                  .addEventListener("click", () => {
-                    const stripe = Stripe(
-                    "<%= Rails.application.credentials.dig(:stripe, :public_key) %>"
-                    );
-
-                    stripe.redirectToCheckout({
-                    sessionId: "<%= @session_id %>"
-                    });
-                  });
-                </script>
+            <% @status = 0 %>
+            <% @product.reviews.each do |k| %>
+              <% if k.user_id == current_user.id %>
+                <% @status = 1 %>
+              <% end %>
+            <% end %>
+            <% if @status != 1 %>
+              <br /><button class="btn btn-default" onclick="myFunction1()">Add Review</button>
+            <% end %>
+            <div class="mar", id="review">
+              <% @review = Review.new %>
+              <%= render("reviews/form") %>
+            </div>
+          <% end %>
+          <script src="https://js.stripe.com/v3/"></script>
               <% end %>
             <% end %>
           </div>
-    
           <div class="product-image-box">
             <% if @product.picture.attached? %>
               <%= image_tag((@product.picture), class: "image-box")%>
@@ -82,13 +57,9 @@
         </div>
     </div>
   </div>
-      
 </div>
-
 <button class="btn btn-default"><%= link_to "Back", 'javascript:history.back()', class: "btn btn-outline-secondary" %></button>
-
 <%= render("shared/footer") %>
-
 <script>
   function myFunction1() {
     var x = document.getElementById('review');

@@ -1,8 +1,13 @@
-class SearchController < ApplicationController
+# frozen_string_literal: true
 
+# rubocop:disable Style/Documentation
+
+class SearchController < ApplicationController
   def index
-    @s_cat = params[:s_cat]
+    @s_cat = params[:name]
     @q = Product.ransack(params[:q])
     @products = @q.result(distinct: true)
   end
 end
+
+# rubocop:enable Style/Documentation

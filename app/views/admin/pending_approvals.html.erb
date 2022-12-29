@@ -5,11 +5,11 @@
     <% end %>
   </div>
   <% if @products.count == 0 %>
-  <div class="container border shadow rounded my-5">
-    <h3 class="my-4 text-center">No new products pending for approval </h3>
-  </div>
+    <div class="container border shadow rounded my-5">
+      <h3 class="my-4 text-center">No new products pending for approval </h3>
+    </div>
   <% else %>
-  <div class="border shadow rounded my-5">
+    <div class="border shadow rounded my-5">
       <div class="row">
         <div class="col-md-12">
           <h3 class="my-4 text-center">Pending Products</h3>
@@ -31,19 +31,19 @@
                  <td><%= product.price %></td>
                  <td><%= product.user.name %></td>
                  <td><%= product.person %></td>
-                 <td>
+                <td>
                   <%= link_to "Accept", approve_product_path(product.id), data: { confirm: "Are you sure you want to approve this Product?" },class:"btn btn-success" %>
                   <%= link_to "Reject", reject_product_path(product.id), data: { confirm: "Are you sure you want to reject this Product?" }, class:"btn btn-danger" %>
                   <%= link_to "View", product_path(product), class: "btn btn-primary" %>
                 </td> 
                 </tr>
               <% end %>
-              </tbody>
+            </tbody>
           </table>
         </div>
       </div>
-  </div>
+    </div>
   <% end %>
-  <% else %>
+<% else %>
   <h3>Sign in with an admin account</h3>
 <% end %>
