@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/BlockLength
+
 require 'rails_helper'
 
 RSpec.describe Room, type: :model do
@@ -24,7 +26,7 @@ RSpec.describe Room, type: :model do
 
   context 'room to broadcast if private' do
     before do
-      Room.create!(name: 'Hello', is_private: :true)
+      Room.create!(name: 'Hello', is_private: true)
     end
 
     it 'results true if room is private' do
@@ -35,7 +37,8 @@ RSpec.describe Room, type: :model do
   context 'to create private room' do
     before do
       Room.create!(name: 'Hope', is_private: true)
-      User.create!(user_id: 1, email: 'glenn@example.com', password: 'password', latitude: 54.234, longitude: 45.345, postcode: 70_096, telephone: '8765434567')
+      User.create!(user_id: 1, email: 'glenn@example.com', password: 'password', latitude: 54.234, longitude: 45.345,
+                   postcode: 70_096, telephone: '8765434567')
       @new_participant = Participant.create!(user_id: 1, room_id: 1)
     end
 
@@ -44,3 +47,5 @@ RSpec.describe Room, type: :model do
     end
   end
 end
+
+# rubocop:enable Metrics/BlockLength

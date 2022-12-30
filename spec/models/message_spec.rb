@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/BlockLength
+
 require 'rails_helper'
 
 RSpec.describe Message, type: :model do
@@ -23,8 +25,9 @@ RSpec.describe Message, type: :model do
 
   context 'confirm participant' do
     before do
-      Room.create!(name: 'Hello', is_private: :true)
-      User.create!(user_id: 1, email: 'glenn@example.com', password: 'password', latitude: 54.234, longitude: 45.345, postcode: 70_096, telephone: '8765434567')
+      Room.create!(name: 'Hello', is_private: true)
+      User.create!(user_id: 1, email: 'glenn@example.com', password: 'password', latitude: 54.234, longitude: 45.345,
+                   postcode: 70_096, telephone: '8765434567')
       @new_participant = Participant.create!(user_id: 1, room_id: 1)
     end
 
@@ -34,18 +37,21 @@ RSpec.describe Message, type: :model do
 
     it 'results true' do
       expect(Participant.present?).to be true
-    end    
+    end
   end
 
   context 'confirm participant to be false' do
     before do
-      Room.create!(name: 'Hello', is_private: :false)
-      User.create!(user_id: 2, email: 'glenn@example.com', password: 'password', latitude: 54.234, longitude: 45.345, postcode: 70_096, telephone: '8765434567')
+      Room.create!(name: 'Hello', is_private: false)
+      User.create!(user_id: 2, email: 'glenn@example.com', password: 'password', latitude: 54.234, longitude: 45.345,
+                   postcode: 70_096, telephone: '8765434567')
       @new_participant = Participant.create!(user_id: 1, room_id: 1)
     end
 
     it 'results true if room is private' do
       expect(Room).not_to be true
-    end 
+    end
   end
 end
+
+# rubocop:enable Metrics/BlockLength
