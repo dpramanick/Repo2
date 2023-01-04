@@ -12,6 +12,8 @@ class Room < ApplicationRecord
   scope :latest_first, -> { order(created_at: :asc) }
   after_create_commit { broadcast_if_public }
 
+  scope :with_room_name, ->(room_name) { where(name: room_name) }
+
   def broadcast_if_public
     broadcast_append_to 'rooms' unless is_private
   end

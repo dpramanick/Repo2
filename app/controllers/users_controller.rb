@@ -9,9 +9,9 @@ class UsersController < ApplicationController
     @room = Room.new
     @rooms = Room.public_rooms
     @room_name = get_name(@user, current_user)
-    @single_room = Room.single_room(@room_name).first || Room.create_private_room([@user, current_user], @room_name)
+    @single_room = Room.with_room_name(@room_name).first || Room.create_private_room([@user, current_user], @room_name)
     @message = Message.new
-    @messages = @single_room.messages.latest_first
+    @messages = @single_room.messages
     render 'rooms/index'
   end
 
@@ -20,10 +20,6 @@ class UsersController < ApplicationController
   def get_name(user1, user2)
     user = [user1, user2].sort
     "private_#{user[0].id}_#{user[1].id}"
-  end
-
-  def dd
-    @single_room = Room.where(name: @room_name).first
   end
 end
 

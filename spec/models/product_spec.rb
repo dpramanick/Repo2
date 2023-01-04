@@ -26,7 +26,7 @@ RSpec.describe Product, type: :model do
     before do
       Category.create!(name: 'Guitar')
       Condition.create!(name: 'Good')
-      @new_product = Product.create!(name: 'Nexa', condition_id: 1, category_id: 1)
+      @new_product = Product.create!(name: 'Nexa', condition_id: 1, category_id: 1, price: 500, picture: spec/fixtures/images/photo.jpg)
     end
 
     it 'includes products with category' do
@@ -42,7 +42,7 @@ RSpec.describe Product, type: :model do
     before do
       Category.create!(name: 'Drum')
       Condition.create!(name: 'Poor')
-      @new_product2 = Product.create!(name: 'Caramel', condition_id: 1, category_id: 1)
+      @new_product2 = Product.create!(name: 'Caramel', condition_id: 1, category_id: 1, price: 500)
     end
 
     it 'includes products with condition' do
@@ -58,7 +58,7 @@ RSpec.describe Product, type: :model do
     before do
       Category.create!(name: 'Amplifiers')
       Condition.create(name: 'Excellent')
-      @new_product3 = Product.create!(name: 'Cumil', condition_id: 1, category_id: 1)
+      @new_product3 = Product.create!(name: 'Cumil', condition_id: 1, category_id: 1, price: 500)
     end
 
     it 'performs search' do

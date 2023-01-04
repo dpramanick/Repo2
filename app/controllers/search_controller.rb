@@ -4,7 +4,6 @@
 
 class SearchController < ApplicationController
   def index
-    @s_cat = params[:name]
     @q = Product.ransack(params[:q])
     @products = @q.result(distinct: true)
   end

@@ -6,10 +6,10 @@ require 'rails_helper'
 
 RSpec.describe Room, type: :model do
   it 'should have a unique name' do
-    Room.create!(name: 'Foo')
+    @room1 = Room.create!(name: 'Foo')
     room = Room.new(name: 'Foo')
-    room.should_not be_valid
-    room.errors[:name].should include('has already been taken')
+    expect(room).not_to be_valid
+    expect(room.errors[:name]).to include('has already been taken')
   end
 
   describe 'broadcasting_if_public' do
@@ -44,6 +44,16 @@ RSpec.describe Room, type: :model do
 
     it 'allow to create a single room' do
       expect(Room.present?).to be true
+    end
+  end
+
+  context 'to verify the room' do
+    before do
+      @room1 = Room.create!(name: 'Loop', is_private: true)
+    end
+
+    it 'verifies the room name' do
+      expect(Room.with_room_name(@room1.name)).to include(@room1)
     end
   end
 end

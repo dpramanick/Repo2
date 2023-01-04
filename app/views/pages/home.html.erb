@@ -1,15 +1,10 @@
 <%= render("shared/topnav")%>
-
-<div class="container">
-  <p id="notice"><%#= notice %></p>
-  <div class="jumbotron">
-    <h2 class="display-4">Let's find something great!</h2>
-    <div class="fc">  
-       <%# @s_cat = raw(<option>name</option><option>price</option><option>category</option><option>condition</option>) %>
-       <%# @s_cat = "name" %>
-
-    <%= render 'search/form' %>
-    </div>
+  <div class="container">
+   
+    <div class="jumbotron">
+      <h2 class="display-4">Let's find something great!</h2>
+      
+      <%= render 'search/form' %>
 
   <p class="random-product"><%= link_to("View All Listings By Sellers", products_path) %></p>  
   <p class="random-product"><%= link_to("View All Listings By Buyers", product_buyer_path) %></p> 

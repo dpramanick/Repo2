@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.newest_first
-    @products = @products.search(params[:search]) if params[:search].present?
+    @products = @products.search(params[:category_id]) if params[:category_id].present?
     @products = @products.condition_id(params[:condition_id]) if params[:condition_id].present?
     return unless params[:category_id].present?
 
@@ -62,7 +62,6 @@ class ProductsController < ApplicationController
   def create
     @product = current_user.products.create(product_params)
     @product.location = current_user.postcode
-    @product.purchased = false
 
     if @product.save
       redirect_to @product, notice: 'Product was successfully created, and waiting for approval.'

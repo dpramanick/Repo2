@@ -57,6 +57,19 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  context 'all_except scope' do
+    before do
+      @user1 = User.create!(name: 'Alok', email: 'alok@example.com', password: 'password10', latitude: 54.234,
+                            longitude: 45.345, postcode: 70_096, telephone: '8765434567')
+      @user2 = User.create!(name: 'Anil', email: 'anil@example.com', password: 'password11', latitude: 54.234,
+                            longitude: 45.345, postcode: 70_096, telephone: '8765434567')
+    end
+
+    it 'permits the scope' do
+      expect(User.all_except(@user1.id)).to include(@user2)
+    end
+  end
 end
 
 auth_hash = OmniAuth::AuthHash.new({

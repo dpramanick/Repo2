@@ -11,12 +11,12 @@
         
       <div class="field">
         <%= form.label :category_id %><br>
-        <%= form.collection_select(:category_id, Category.order(:name), :id, :name, {:selected => @products.first&.category_id }) %>
+        <%= form.collection_select(:category_id, Category.all, :id, :name, { selected: params[:category_id] }) %>
       </div>
 
       <div class="field">
         <%= form.label :condition_id %><br>
-        <%= form.collection_select(:condition_id, Condition.order(:name), :id, :name, {:selected => @products.first&.condition_id }) %>
+        <%= form.collection_select(:condition_id, Condition.all, :id, :name, { selected: params[:condition_id] }) %>
       </div>
 
       <%= form.submit "Filter Listings", class: "btn btn-default btn-xs field" %>

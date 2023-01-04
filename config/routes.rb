@@ -65,5 +65,7 @@ Rails.application.routes.draw do
   get 'messages', to: 'static_pages#messages'
   get 'messages/open', to: 'messages#create'
 
+  post 'mapp', to: 'pages#mapp'
+
   get '/account/', to: 'pages#account', as: 'show_current_account'
 end

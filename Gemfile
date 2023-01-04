@@ -109,6 +109,7 @@ gem 'omniauth-rails_csrf_protection', '~>1.0'
 # Download images for Seed file
 gem 'down'
 
+gem 'pry'
 gem 'rubocop', '~> 1.40'
 gem 'rubocop-rails', '~> 2.17', '>= 2.17.3'
 gem 'rubocop-rspec', '~> 2.16'

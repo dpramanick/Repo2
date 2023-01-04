@@ -5,7 +5,6 @@
 	<% if product.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being created:</h2>
-
         <ul>
           <% product.errors.full_messages.each do |message| %>
             <li><%= message %></li>
@@ -23,7 +22,7 @@
    <div class="mar">
     <span class="text-danger">*</span>
     <%= f.label :price %>
-    <%= f.text_field :price, class:"form-control", required: true %>
+    <%= f.number_field :price, class:"form-control", required: true %>
   </div>
 
   <div class="mar">
@@ -35,13 +34,13 @@
   <div class="mar">
     <span class="text-danger">*</span>
     <%= f.label :conditions %>
-    <%= f.select :condition_id, options_for_select(@conditions.collect { |con| [con.name, con.id]}) %>
+    <%= f.collection_select(:condition_id, Condition.all, :id, :name, { selected: params[:condition_id] }) %>
   </div>
 
   <div class="mar">
     <span class="text-danger">*</span>
     <%= f.label :categories %>
-    <%= f.select :category_id, options_for_select(@categories.collect { |cat| [cat.name, cat.id]}) %>
+    <%= f.collection_select(:category_id, Category.all, :id, :name, { selected: params[:category_id] }) %>
   </div>
 
   <div class="mar">
@@ -51,7 +50,8 @@
   </div>
 
   <div class="mar">
-    <%= f.label :photo %>
+    <span class="text-danger">*</span>
+    <%= f.label :picture %>
     <%= f.file_field :picture, :class => "form-control" %>
   </div>
 

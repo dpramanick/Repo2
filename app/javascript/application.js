@@ -27,8 +27,13 @@ function initMap(lat, lng) {
   var marker = new google.maps.Marker({
       position: myCoords,
       map: map,
-      
-
   });
 }
 window.initMap = initMap;
+
+function myFunction3() {
+  var s_cat = document.getElementById(ss_cat);
+  
+  var s_cat = event.target.value;
+  console.log(s_cat);
+}

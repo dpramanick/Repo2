@@ -1,27 +1,6 @@
 <%= search_form_for(@q, url: search_path, method: :get) do |f| %>
-  <%= f.search_field :name_cont,
-  placeholder: "Search by name...",
-  class:"form-control",
-  id: "hero-search" %>
-<% end %>
-
-<%= search_form_for(@q, url: search_path, method: :get) do |f| %>
-  <%= f.search_field :price_eq,
-  placeholder: "Search by price...",
-  class:"form-control",
-  id: "hero-search" %>
-<% end %>
-
-<%= search_form_for(@q, url: search_path, method: :get) do |f| %>
-  <%= f.search_field :category_name_cont,
-  placeholder: "Search by category...",
-  class:"form-control",
-  id: "hero-search" %>
-<% end %>
-
-<%= search_form_for(@q, url: search_path, method: :get) do |f| %>
-  <%= f.search_field :condition_name_cont,
-  placeholder: "Search by condition...",
+  <%= f.search_field :name_or_category_name_or_condition_name_i_cont_any,
+  placeholder: "Search by name or category or condition",
   class:"form-control",
   id: "hero-search" %>
 <% end %>

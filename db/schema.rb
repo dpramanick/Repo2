@@ -14,7 +14,7 @@
 
 # rubocop:disable Metrics/BlockLength
 
-ActiveRecord::Schema[7.0].define(version: 20_221_229_152_952) do
+ActiveRecord::Schema[7.0].define(version: 20_230_103_105_123) do
   create_table 'action_text_rich_texts', force: :cascade do |t|
     t.string 'name', null: false
     t.text 'body'
@@ -100,6 +100,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_229_152_952) do
     t.boolean 'purchased'
     t.boolean 'is_approved', default: false
     t.string 'person'
+    t.binary 'picture'
     t.index ['category_id'], name: 'index_products_on_category_id'
     t.index ['condition_id'], name: 'index_products_on_condition_id'
   end

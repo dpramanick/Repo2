@@ -18,8 +18,6 @@ class User < ApplicationRecord
              format: { with: /\A(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}\z/ }
 
   scope :all_except, ->(user) { where.not(id: user) }
-  scope :single_room, ->(sroom) { where single_room: sroom }
-  scope :latest_first, -> { order(created_at: :asc) }
 
   after_create_commit { broadcast_append_to 'users' }
 
