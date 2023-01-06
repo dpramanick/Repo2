@@ -37,6 +37,15 @@
 	border: 1px solid #ddd;
     border-radius: 4px;
 }
+#bt {
+	width: 800px;
+}
+td{
+  background-color: white;
+}
+.bt {
+  margin-left: -66px;
+}
 @media (min-width: 700px) {
 	.index-row {
 		display: flex;

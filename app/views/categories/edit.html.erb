@@ -4,6 +4,7 @@
     <div>
       <h1>Edit Category <%= @category.name %></h1>
       <%= render 'form' %>
+      <button class="btn btn-default"><%= link_to "Back", 'javascript:history.back()' %></button>
     </div>
   </div>
 </div>

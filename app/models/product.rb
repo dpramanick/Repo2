@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   has_many :reviews
 
   validates :category_id, presence: true
-  validates :price, numericality: { only_integer: true }
+  validates :price, numericality: { :greater_than_or_equal_to => 0 }
   validate :correct_picture_type
 
   scope :search, ->(search) { joins(:category).where('categories.id like ?', "%#{search}%").distinct }
@@ -22,10 +22,8 @@ class Product < ApplicationRecord
   private
 
   def correct_picture_type
-    if picture.attached? && picture.content_type.in?(%w[picture/jpg picture/png])
+    if picture.attached? && !picture.content_type.in?(%w[picture/jpg picture/png])
       errors.add(:picture, 'must be a JPG or PNG')
-    elsif picture.attached? == false
-      errors.add(:picture, 'required')
     end
   end
 end

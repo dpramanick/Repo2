@@ -3,6 +3,8 @@
 # rubocop:disable Style/Documentation
 
 class AdminController < ApplicationController
+  before_action :set_product
+  
   def pending_approvals
     @products = Product.is_approved(false)
   end
@@ -26,25 +28,25 @@ class AdminController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
+    @product = set_product
   end
 
   def update
-    @product = Product.find(params[:id])
+    @product = set_product
     @product.update(product_params)
 
     redirect_to admin_path, notice: 'Product is successfully updated.'
   end
 
   def approve_product
-    @product = Product.find(params[:id])
+    @product = set_product
     return unless @product.update_attribute(:is_approved, true)
 
     redirect_to request.referrer, notice: 'Product approved.'
   end
 
   def reject_product
-    @product = Product.find(params[:id])
+    @product = set_product
     return unless @product.update_attribute(:is_approved, false)
 
     @product.destroy
@@ -52,6 +54,10 @@ class AdminController < ApplicationController
   end
 
   private
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
   def product_params
     params.require(:product).permit(:is_approved)

@@ -31,7 +31,11 @@
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
           <div class="thumbnailimg">
-            <%= image_tag product.picture if product.picture.attached? %>
+          <% if product.picture.attached? %>
+            <%= image_tag((product.picture), class: "image-box")%>
+          <% else %>
+            <%= image_tag("category-icons/bass.svg", class: "image-box")%>
+          <% end %>
           </div>
           <div>
             <div class="caption">

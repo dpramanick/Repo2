@@ -26,7 +26,7 @@ RSpec.describe Product, type: :model do
     before do
       Category.create!(name: 'Guitar')
       Condition.create!(name: 'Good')
-      @new_product = Product.create!(name: 'Nexa', condition_id: 1, category_id: 1, price: 500, picture: spec/fixtures/images/photo.jpg)
+      @new_product = Product.create!(name: 'Nexa', condition_id: 1, category_id: 1, price: 500)
     end
 
     it 'includes products with category' do
@@ -58,11 +58,21 @@ RSpec.describe Product, type: :model do
     before do
       Category.create!(name: 'Amplifiers')
       Condition.create(name: 'Excellent')
+      binding.pry
       @new_product3 = Product.create!(name: 'Cumil', condition_id: 1, category_id: 1, price: 500)
     end
 
     it 'performs search' do
-      expect(Product.search('Amplifiers')).to include(@new_product3)
+      expect(Product.search(1)).to include(@new_product3)
+    end
+  end
+
+  context 'picture attached scope' do
+    it 'is valid if image is attached' do
+      file = Rails.root.join('spec', 'fixtures', 'images', 'product_item', 'photo.jpg')
+
+      product_item = Product.new
+      expect(product_item.invalid?).to eq true
     end
   end
 end

@@ -4,6 +4,7 @@
     <div class="product-show">
       <div class="product-box">
         <div class="product-details">
+
         <h2><%= @product.name %></h2>
         <p class="product-posted-by">Listed by <%= @product.user.name %> | <%= time_ago_in_words(@product.created_at) %> ago.</p>
         <p>Location: <%= @product.location %></p>
@@ -12,10 +13,12 @@
         <p>Description: <%= @product.description %></p>
         <p>Phone Number: <%= @user.telephone %></p>
         <h3>Price: <%= @product.price %></h3>
-          <% if user_signed_in? && current_user != @product.user %>
-            <h5>Shipping: <%= number_to_currency(@delivery_cost) %></h5>
-            <h5><%= @delivery_time %></h5>
-          <% end %>
+
+        <% if user_signed_in? && current_user != @product.user %>
+          <h5>Shipping: <%= number_to_currency(@delivery_cost) %></h5>
+          <h5><%= @delivery_time %></h5>
+        <% end %>
+
         <p class="product-posted-by">All currencies are $AUD</p>
         <% if user_signed_in? %>
           <% if @product.user_id == current_user.id %>
@@ -24,6 +27,7 @@
           <% else %>
           <button class="btn btn-default"><%= link_to "Interest", smail_product_path %></button>
           <button class="btn btn-default"><%= link_to "Start Chatting", rooms_path %></button><br />
+
           <% if @product.is_approved == true %>
             <% if @product.reviews.count != 0 %>
               <h2>Reviews</h2>
@@ -37,7 +41,6 @@
             <% end %>
             <% if @status != 1 %>
               <br /><button class="btn btn-default" onclick="myFunction1()">Add Review</button>
-              
             <% end %>
             <div class="mar", id="review">
               <% @review = Review.new %>
@@ -46,6 +49,7 @@
           <% end %>
         <% end %>
       <% end %>
+      
         </div>
           <div class="product-image-box">
             <% if @product.picture.attached? %>

@@ -3,6 +3,8 @@
 # rubocop:disable Style/Documentation
 
 class CategoriesController < ApplicationController
+  before_action :set_category
+
   def index
     @categories = Category.all
   end
@@ -21,12 +23,16 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def show
+    @category = set_category
+  end
+  
   def edit
-    @category = Category.find(params[:id])
+    @category = set_category
   end
 
   def update
-    @category = Category.find(params[:id])
+    @category = set_category
     if @category.update(category_params)
       redirect_to categories_path
     else
@@ -35,7 +41,18 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def destroy
+    @category = set_category
+    @category.destroy
+    
+    redirect_to request.referrer, notice: 'Category deleted.'
+  end
+
   private
+
+  def set_category
+    @category = Category.find(params[:id])
+  end
 
   def category_params
     params.require(:category).permit(:name)
