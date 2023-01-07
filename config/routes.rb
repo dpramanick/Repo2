@@ -56,8 +56,6 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  delete '/categories/:id', to: 'categories#destroy', as: 'delete_category'  
-
   get 'pages/map', to: 'pages#map'
 
   get '/products/:id/smail', to: 'products#smail', as: 'smail_product'

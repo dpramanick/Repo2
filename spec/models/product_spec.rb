@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/BlockLength
+# rubocop:disable Metrics/BlockLength, Lint/UselessAssignment
 
 require 'rails_helper'
 
@@ -58,7 +58,6 @@ RSpec.describe Product, type: :model do
     before do
       Category.create!(name: 'Amplifiers')
       Condition.create(name: 'Excellent')
-      binding.pry
       @new_product3 = Product.create!(name: 'Cumil', condition_id: 1, category_id: 1, price: 500)
     end
 
@@ -77,4 +76,4 @@ RSpec.describe Product, type: :model do
   end
 end
 
-# rubocop:enable Metrics/BlockLength
+# rubocop:enable Metrics/BlockLength, Lint/UselessAssignment

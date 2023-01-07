@@ -5,7 +5,7 @@
   </div>
   <div class="container">
     <% @users.each do |i| %>    
-      <% k = Product.where(user_id: i.id, person: "seller") %>
+      <% k = Product.user_id(i.id, "seller") %>
         <% if k.count != 0 %>
           <h4 class="text-center">Seller Name - <%= i.name %></h4>              
           <% k.each do |j| %>

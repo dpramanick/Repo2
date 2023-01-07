@@ -6,23 +6,6 @@
   
   <div class="row index-row">
     <h3>Results found</h3>
-    <div>
-      <%= form_with url: products_path, method: "get",  local: true, :html => {class: "filter-form"} do |form| %>
-        
-      <div class="field">
-        <%= form.label :category_id %><br>
-        <%= form.collection_select(:category_id, Category.all, :id, :name, { selected: params[:category_id] }) %>
-      </div>
-
-      <div class="field">
-        <%= form.label :condition_id %><br>
-        <%= form.collection_select(:condition_id, Condition.all, :id, :name, { selected: params[:condition_id] }) %>
-      </div>
-
-      <%= form.submit "Filter Listings", class: "btn btn-default btn-xs field" %>
-
-      <% end %>
-    </div>
   </div>
 
   <div class="row">
@@ -42,7 +25,6 @@
               <h3><%= product.name %></h3>
               <div class="condition-container">
                   <%= link_to("View Product", product_path(product), class: "btn btn-default") %>
-                  <%= p Condition.find(product.condition_id).name + " condition" %>
               </div>
             </div>
           </div>

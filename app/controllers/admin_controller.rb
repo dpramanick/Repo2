@@ -3,8 +3,8 @@
 # rubocop:disable Style/Documentation
 
 class AdminController < ApplicationController
-  before_action :set_product
-  
+  before_action :set_product, only: [:show]
+
   def pending_approvals
     @products = Product.is_approved(false)
   end

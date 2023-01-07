@@ -3,7 +3,7 @@
 # rubocop:disable Style/Documentation
 
 class CategoriesController < ApplicationController
-  before_action :set_category
+  before_action :set_category, only: [:show]
 
   def index
     @categories = Category.all
@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
   def show
     @category = set_category
   end
-  
+
   def edit
     @category = set_category
   end
@@ -43,8 +43,8 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category = set_category
+
     @category.destroy
-    
     redirect_to request.referrer, notice: 'Category deleted.'
   end
 
